@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডিজিটাল তাসবিহ কাউন্টার - Islamic Life 0.13</title>
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            text-align: center;
+            background-color: #ffffff;
+            direction: rtl;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+        }
+        h1 {
+            color: #00796B;
+            font-size: 24px;
+        }
+        .counter {
+            font-size: 80px;
+            margin: 20px 0;
+            color: #004D40;
+            font-weight: bold;
+        }
+        .button {
+            font-size: 22px;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .increment {
+            background: #00796B;
+            color: white;
+        }
+        .increment:hover {
+            background: #004D40;
+        }
+        .reset {
+            background: #D32F2F;
+            color: white;
+        }
+        .reset:hover {
+            background: #B71C1C;
+        }
+        .button:active {
+            transform: scale(0.95);
+        }
+        #a{
+            display: flex;
+            justify-content: space-between ;
+            flex-direction: row-reverse;
+        }
+        #b{
+            color: white;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <div id="a" class="h-10 bg-green-500 text-center flex justify-between px-3 items-center font-bold text-xl text-white">
+            <div></div>
+            <div><h1 id="b">Islamic Life 0.13</h1></div>
+         <div>
+            <a href="home.html"><button class="border rounded-sm p-1 active:bg-blue-500">Back</button></a>
+         </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>📿 ডিজিটাল তাসবিহ কাউন্টার - Islamic Life 0.13</h1>
+        <div class="counter" id="counter">০০০</div>
+        <button class="button increment" onclick="incrementCounter()">তাসবিহ যোগ করুন</button>
+        <button class="button reset" onclick="resetCounter()">রিসেট</button>
+    </div>
+    <script>
+        let count = 0;
+        
+        function toBengaliNumber(num) {
+            const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return num.toString().split('').map(digit => bengaliDigits[digit]).join('');
+        }
+
+        function updateDisplay() {
+            document.getElementById("counter").innerText = toBengaliNumber(count.toString().padStart(2, '0'));
+        }
+        
+        function incrementCounter() {
+            if (count < 999) {
+                count++;
+                if (count % 100 === 0) {
+                    navigator.vibrate(200);
+                }
+                updateDisplay();
+            }
+        }
+        
+        function resetCounter() {
+            if (confirm("আপনি কি নিশ্চিত যে আপনি কাউন্টারটি রিসেট করতে চান?")) {
+                count = 0;
+                updateDisplay();
+            }
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>

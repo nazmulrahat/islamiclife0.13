@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলা ইসলামিক ক্যালেন্ডার - Islamic Life 0.13</title>
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            text-align: center;
+       
+            direction: rtl;
+        
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+        }
+        h1 {
+            color: #00796B;
+            font-size: 24px;
+        }
+        .calendar {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #004D40;
+            font-weight: bold;
+        }
+        .arabic-date {
+            font-size: 22px;
+            color: #D84315;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .bangla-date {
+            font-size: 22px;
+            color: #1565C0;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #a{
+            display: flex;
+            justify-content: space-between ;
+            flex-direction: row-reverse;
+        }
+        #b{
+            color: white;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <div id="a" class="h-10 bg-green-500 text-center flex justify-between px-3 items-center font-bold text-xl text-white">
+            <div></div>
+            <div><h1 id="b">Islamic Life 0.13</h1></div>
+         <div>
+            <a href="home.html"><button class="border rounded-sm p-1 active:bg-blue-500">Back</button></a>
+         </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>📅 বাংলা ইসলামিক ক্যালেন্ডার <br> Islamic Life 0.13</h1>
+        <div class="bangla-date" id="banglaDate"></div>
+        <div class="arabic-date" id="arabicDate"></div>
+        <div class="calendar" id="calendar"></div>
+    </div>
+    <script>
+        function getBanglaDate() {
+            const banglaMonths = ['বৈশাখ', 'জ্যেষ্ঠ', 'আষাঢ়', 'শ্রাবণ', 'ভাদ্র', 'আশ্বিন', 'কার্তিক', 'অগ্রহায়ণ', 'পৌষ', 'মাঘ', 'ফাল্গুন', 'চৈত্র'];
+            const arabicMonths = ['মুহাররম', 'সফর', 'রবিউল আউয়াল', 'রবিউস সানি', 'জুমাদাল উলা', 'জুমাদাস সানি', 'রজব', 'শাবান', 'রমজান', 'শাওয়াল', 'জিলকদ', 'জিলহজ্জ'];
+            const englishMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            const today = new Date();
+            const englishDate = today.getDate();
+            const englishMonth = today.getMonth();
+            const englishYear = today.getFullYear();
+            
+            const banglaDate = englishDate.toLocaleString('bn-BD');
+            const banglaYear = englishYear.toLocaleString('bn-BD');
+            
+            const banglaMonth = banglaMonths[englishMonth];
+            const arabicMonth = arabicMonths[englishMonth % 12];
+            
+            document.getElementById("banglaDate").innerHTML = `বাংলা: ${banglaDate} ${banglaMonth}`;
+            document.getElementById("arabicDate").innerHTML = `আরবি: ${banglaDate} ${arabicMonth}`;
+            document.getElementById("calendar").innerHTML = `ইংরেজি: ${englishDate} ${englishMonths[englishMonth]}, ${englishYear}`;
+        }
+        
+        getBanglaDate();
+    </script>
+</body>
+</html>
