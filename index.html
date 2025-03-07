@@ -6,52 +6,129 @@
     <title>Islamic Life 0.13</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            background: linear-gradient(to bottom, #002D62, #008080);
+            color: white;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            font-size: 16px;
+            font-weight: bold;
+            background: linear-gradient(to right, #34D399, #059669);
+            color: white;
+            padding: 10px;
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(to right, #22C55E, #16A34A);
+        }
+        .card:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease-in-out;
+        }
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #0D47A1, #1976D2);
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, #1B5E20, #4CAF50);
+            height: auto;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-top: 5px;
+        }
+        .footer a:hover {
+            color: #FFA500;
+        }
+        @media (min-width: 640px) {
+            .footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .footer a {
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
-<link rel="shortcut icon"  href="img/logo.jpg" type="image/x-icon">
 <body>
     <header>
-        <div class="h-10 bg-green-500 text-center flex justify-center items-center font-bold text-xl text-white">
-            <h1>Islamic Life 0.13</h1>
-        
+        <div class="navbar">
+            📿 Islamic Life 0.13
         </div>
     </header>
-
-    <main>
+    <main style="margin-top: 90px; margin-bottom: 80px;">
         <section>
-            <div class="flex flex-wrap justify-center items-center gap-5 my-10">
-                <div class="flex flex-col gap-5">
-                    <a href="alquran.html" aria-label="আল-কুরআন">
-                        <div class="h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 text-center bg-green-500 flex justify-center items-center text-white font-bold p-2 rounded-2xl border shadow-lg hover:bg-blue-600 active:bg-yellow-500 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <h1>আল-কুরআন</h1>
-                        </div>
-                    </a>
-                    <a href="calender.html" aria-label="ইসলামিক ক্যালেন্ডার">
-                        <div class="h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 text-center bg-green-500 flex justify-center items-center text-white font-bold p-2 rounded-2xl border shadow-lg hover:bg-blue-600 active:bg-yellow-500 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <h1>ইসলামিক ক্যালেন্ডার</h1>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="flex flex-col gap-5">
-                    <a href="asmulhusna.html" aria-label="আসমাউল হুসনা">
-                        <div class="h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 text-center bg-green-500 flex justify-center items-center text-white font-bold p-2 rounded-2xl border shadow-lg hover:bg-blue-600 active:bg-yellow-500 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <h1>আসমাউল হুসনা</h1>
-                        </div>
-                    </a>
-                    <a href="tajbi.html" aria-label="তাসবিহ">
-                        <div class="h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 text-center bg-green-500 flex justify-center items-center text-white font-bold p-2 rounded-2xl border shadow-lg hover:bg-blue-600 active:bg-yellow-500 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <h1>তাসবিহ 📿</h1>
-                        </div>
-                    </a>
-                </div>
+            <div class="grid grid-cols-2 gap-6 my-10">
+                <a href="alquran.html" class="card">📖 আল-কুরআন</a>
+                <a href="calender.html" class="card">📅 ইসলামিক ক্যালেন্ডার</a>
+                <a href="asmulhusna.html" class="card">🕋 আসমাউল হুসনা</a>
+                <a href="tajbi.html" class="card">📿 তাসবিহ কাউন্টার</a>
             </div>
         </section>
-
-        <section>
-            <div class="flex justify-center  my-20">
-              <a href="https://www.facebook.com/islamiclife786.13">  <button class="px-10 text-xl font-bold text-white py-2 rounded-2xl  hover:bg-blue-600 active:bg-blue-600  active:scale-95 transition-all duration-300 bg-green-500">Facebook Page</button></a>
-            </div>
-        </section> 
     </main>
+    <footer>
+        <div class="footer">
+            <span>© 2025 Islamic Life | All Rights Reserved</span>
+            <a href="https://www.facebook.com/islamiclife786.13" target="_blank">🌍 Visit Our Facebook</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.style.opacity = "0";
+            setTimeout(() => {
+                document.body.style.opacity = "1";
+                document.body.style.transition = "opacity 0.5s ease-in-out";
+            }, 200);
+        });
+    </script>
 </body>
 </html>
