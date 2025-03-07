@@ -11,8 +11,29 @@
             text-align: center;
        
             direction: rtl;
-        
+            background: linear-gradient(to bottom, #002D62, #008080);
+            height: 100vh;
+            display: flex ;
+            flex-direction: column;
+            justify-content: space-between;
         }
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #0D47A1, #1976D2);
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+           
+        }
+       
         .container {
             width: 90%;
             max-width: 500px;
@@ -45,34 +66,71 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        #a{
+        .footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, #1B5E20, #4CAF50);
+            height: fit-content;
+
             display: flex;
-            justify-content: space-between ;
-            flex-direction: row-reverse;
-        }
-        #b{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
             color: white;
+            
+            text-align: center;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
         }
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s;
+           
+        }
+        .footer a:hover {
+            color: #FFA500;
+        }
+     
     </style>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header>
-        <div id="a" class="h-10 bg-green-500 text-center flex justify-between px-3 items-center font-bold text-xl text-white">
-            <div></div>
-            <div><h1 id="b">Islamic Life 0.13</h1></div>
-         <div>
-            <a href="index.html"><button class="border rounded-sm p-1 active:bg-blue-500">Back</button></a>
-         </div>
+        <div class="navbar  ">
+            <h1></h1>
+           <h1 class="text-white"> 📿 Islamic Life 0.13</h1>
+      
+            
         </div>
     </header>
+ 
     <div class="container">
         <h1>📅 বাংলা ইসলামিক ক্যালেন্ডার <br> Islamic Life 0.13</h1>
         <div class="bangla-date" id="banglaDate"></div>
         <div class="arabic-date" id="arabicDate"></div>
         <div class="calendar" id="calendar"></div>
     </div>
+    <footer>
+        <div class="footer gap-0 flex flex-col justify-center items-center">
+            <div class="my-3">
+                <a href="index.html"><button class="btn btn-ghost border border-blue-500 shadow-xl text-white bg-blue-500 h-2 w-20">Back</button></a>
+               </div> 
+      
+      
+             
+               <div>
+                <a class="animate-pulse" href="https://www.facebook.com/islamiclife786.13" target="_blank">🌍 Visit Our Facebook</a>
+               </div>
+           <br>
+           <div class="mb-3">    <p>© 2025 Islamic Life | All Rights Reserved</p></div>
+        </div>
+ 
+    </footer>
     <script>
         function getBanglaDate() {
             const banglaMonths = ['বৈশাখ', 'জ্যেষ্ঠ', 'আষাঢ়', 'শ্রাবণ', 'ভাদ্র', 'আশ্বিন', 'কার্তিক', 'অগ্রহায়ণ', 'পৌষ', 'মাঘ', 'ফাল্গুন', 'চৈত্র'];
