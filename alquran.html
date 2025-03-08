@@ -8,8 +8,7 @@
     <style>
         body {
             font-family: 'Amiri', serif;
-            background: linear-gradient(to bottom, #002D62, #008080);
-            color: white;
+            background: linear-gradient(to right, #539ce5, #c0fdec);
             text-align: center;
               min-height: 100vh;
     height: 100%;
@@ -19,6 +18,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .navbar {
             width: 100%;
             position: fixed;
@@ -33,13 +33,14 @@
             font-weight: bold;
             color: white;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        
         }
         .quran-container {
             width: 60%;
             margin: 20px auto;
             background: white;
             padding: 20px;
-            position: fixed;
+       
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -127,7 +128,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="flex justify-between">
     <header>
         <div class="navbar  ">
             <h1></h1>
@@ -136,26 +137,25 @@
             
         </div>
     </header>
+   
     
-    <div class="quran-container">
+    <div class="quran-container ">
         <h1 class="text-black font-bold text-2xl">আল-কুরআন</h1>
         <ul class="surah-list" id="surahList"></ul>
         <p id="surahTitle"> একটি সূরা নির্বাচন করুন</p>
         <p id="artistName">Islamic Life 0.13</p>
         <audio id="audioPlayer" controls></audio>
+        <br>
+        <a href="index.html">
+            <button class="bg-blue-600 w-56 text-white text-xl px-4 py-2 rounded-xl hover:bg-green-500 active:bg-lime-400 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 transition duration-300">
+              Back
+            </button>
+          </a>
+   
     </div>
 
-    <footer>
-        <div class="footer gap-0 flex flex-col justify-center items-center">
-            <div class="my-3">
-                <a href="index.html"><button class="btn btn-ghost border border-blue-500 shadow-xl text-white bg-blue-500 h-2 w-20">Back</button></a>
-               </div> 
-      
-      
-          
-           </div>
-          
-    </footer>
+
+
 
     <script>
         const surahs = [
