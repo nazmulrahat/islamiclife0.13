@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যাকাতের হিসাব</title>
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #002D62, #008080);
+            direction: rtl;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #0D47A1, #1976D2);
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        main {
+            flex-grow: 1; /* Allow main content to grow and take available space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .container button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, #1B5E20, #4CAF50);
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #FFA500;
+        }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="text-white">  Islamic Life 0.13</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container ">
+            <h1>যাকাতের হিসাব</h1>
+            <p>দয়া করে ১ ভরি (তোলা) রূপার মূল্য লিখুন এবং আপনার সম্পত্তি মূল্য লিখুন।</p>
+
+            <!-- Price of Gold or Silver per Tola -->
+            <input class="text-center" type="text" id="value" placeholder="১ ভরি রূপার মূল্য লিখুন" oninput="convertToBangla(this)" />
+
+            <!-- Total Wealth input -->
+            <input class="text-center" type="text" id="wealth" placeholder="আপনার সম্পত্তি মূল্য লিখুন" oninput="convertToBangla(this)" />
+
+            <button onclick="calculateZakat()">যাকাত হিসাব করুন</button>
+
+            <!-- Zakat Calculation Result -->
+            <div id="zakatResult" class="result" style="display: none;">
+                <p>আপনার যাকাত হবে: <span id="zakatAmount"></span> টাকা</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer gap-0 flex flex-col justify-center items-center">
+            <div class="my-3">
+                <a href="index.html"><button class="btn btn-ghost border border-blue-500 shadow-xl text-white bg-blue-500 h-2 w-20">Back</button></a>
+            </div>
+
+            <div>
+                <a class="animate-pulse" href="https://www.facebook.com/islamiclife786.13" target="_blank">🌍 Visit Our Facebook</a>
+            </div>
+            <br>
+            <div> <p class="mb-3">© 2025 Islamic Life 0.13 | All Rights Reserved</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to convert numbers to Bangla digits
+        function toBanglaNumber(num) {
+            const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return num.toString().split('').map(digit => banglaDigits[parseInt(digit)] || digit).join('');
+        }
+
+        // Function to convert input values and placeholders to Bangla digits
+        function convertToBangla(inputElement) {
+            const value = inputElement.value;
+            inputElement.value = value.split('').map(digit => {
+                return isNaN(digit) ? digit : toBanglaNumber(digit);
+            }).join('');
+
+            // Convert the placeholder as well
+            const placeholder = inputElement.placeholder;
+            inputElement.placeholder = placeholder.split('').map(digit => {
+                return isNaN(digit) ? digit : toBanglaNumber(digit);
+            }).join('');
+        }
+
+        function calculateZakat() {
+            const value = parseFloat(document.getElementById('value').value.replace(/[^\d.-]/g, ''));  // Price per tola
+            const wealth = parseFloat(document.getElementById('wealth').value.replace(/[^\d.-]/g, '')); // Total wealth
+
+            if (value && wealth) {
+                // Zakat Calculation Formula: 2.5% of total wealth
+                const zakatAmount = (wealth * 2.5) / 100;
+                
+                // Display the result in Bangla digits
+                document.getElementById('zakatAmount').textContent = toBanglaNumber(zakatAmount.toFixed(2));
+                document.getElementById('zakatResult').style.display = 'block';
+                
+                // Save the values to localStorage
+                localStorage.setItem('goldPrice', value);
+                localStorage.setItem('totalWealth', wealth);
+            } else {
+                alert('অনুগ্রহ করে সঠিক তথ্য প্রদান করুন।');
+            }
+        }
+
+        // Check if a value is already stored in localStorage
+        window.onload = function() {
+            const savedGoldPrice = localStorage.getItem('goldPrice');
+            const savedWealth = localStorage.getItem('totalWealth');
+
+            if (savedGoldPrice) {
+                document.getElementById('value').value = savedGoldPrice;
+            }
+
+            if (savedWealth) {
+                document.getElementById('wealth').value = savedWealth;
+            }
+
+            // Convert placeholders to Bangla digits as well
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => convertToBangla(input));
+        };
+    </script>
+</body>
+</html>

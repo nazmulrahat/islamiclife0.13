@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ডিজিটাল তাসবিহ কাউন্টার - Islamic Life 0.13</title>
     <link rel="shortcut icon"  href="img/logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-            body {
+        body {
             font-family: 'Amiri', serif;
             text-align: center;
             height: 100vh;
             background: linear-gradient(to bottom, #002D62, #008080);
             direction: rtl;
-          
-            display: flex ;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
@@ -31,15 +32,12 @@
             font-weight: bold;
             color: white;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10; /* Ensure navbar stays on top */
         }
         .footer {
             width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
             background: linear-gradient(to right, #1B5E20, #4CAF50);
             height: fit-content;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -47,18 +45,8 @@
             font-size: 14px;
             font-weight: bold;
             color: white;
-            
             text-align: center;
             box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .footer a {
-            color: #FFD700;
-            text-decoration: none;
-            transition: color 0.3s;
-           
-        }
-        .footer a:hover {
-            color: #FFA500;
         }
         .container {
             width: 80%;
@@ -69,6 +57,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 12px;
             text-align: center;
+            flex-grow: 1; /* Ensures it takes the available space */
         }
         h1 {
             color: #00796B;
@@ -106,54 +95,47 @@
         .button:active {
             transform: scale(0.95);
         }
-        #a{
+        #a {
             display: flex;
-            justify-content: space-between ;
+            justify-content: space-between;
             flex-direction: row-reverse;
         }
-        #b{
+        #b {
             color: white;
         }
- 
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="">
 
-        <header class="mb-32">
-            <div class="navbar  ">
-                <h1></h1>
-               <h1 class="text-white"> 📿 Islamic Life 0.13</h1>
-          
-                
-            </div>
-        </header>
-  <main class="flex justify-center items-center">
-    <div class="container">
-        <h1 class="text-2xl font-extrabold ">📿 ডিজিটাল তাসবিহ কাউন্টার  </h1>
-        <h1 class="font-bold text-xl">Islamic Life 0.13</h1>
-        <div class="counter" id="counter">০০০</div>
-        <button class="button increment" onclick="incrementCounter()">তাসবিহ যোগ করুন</button>
-        <button class="button reset" onclick="resetCounter()">রিসেট</button>
-    </div>
-  </main>
+    <header class="mb-32">
+        <div class="navbar">
+            <h1 class="text-white">  Islamic Life 0.13</h1>
+        </div>
+    </header>
+
+    <main class="flex justify-center items-center">
+        <div class="container">
+            <h1 class="text-2xl font-extrabold">📿 ডিজিটাল তাসবিহ কাউন্টার</h1>
+            <h1 class="font-bold text-xl">Islamic Life 0.13</h1>
+            <div class="counter" id="counter">০০০</div>
+            <button class="button increment" onclick="incrementCounter()">তাসবিহ যোগ করুন</button>
+            <button class="button reset" onclick="resetCounter()">রিসেট</button>
+        </div>
+    </main>
 
     <footer>
         <div class="footer gap-0 flex flex-col justify-center items-center">
             <div class="my-3">
                 <a href="index.html"><button class="btn btn-ghost border border-blue-500 shadow-xl text-white bg-blue-500 h-2 w-20">Back</button></a>
-               </div> 
-      
-      
-             
-               <div>
+            </div>
+            <div>
                 <a class="animate-pulse" href="https://www.facebook.com/islamiclife786.13" target="_blank">🌍 Visit Our Facebook</a>
-               </div>
-           <br>
-           <div>    <p class="mb-3">© 2025 Islamic Life | All Rights Reserved</p></div>
+            </div>
+            <br>
+            <div><p class="mb-3">© 2025 Islamic Life 0.13 | All Rights Reserved</p></div>
         </div>
     </footer>
+
     <script>
         let count = 0;
         
@@ -165,17 +147,19 @@
         function updateDisplay() {
             document.getElementById("counter").innerText = toBengaliNumber(count.toString().padStart(2, '0'));
         }
-        
+
         function incrementCounter() {
             if (count < 999) {
                 count++;
                 if (count % 100 === 0) {
-                    navigator.vibrate(200);
+                    if (navigator.vibrate) {
+                        navigator.vibrate(200); // Check if vibration is supported
+                    }
                 }
                 updateDisplay();
             }
         }
-        
+
         function resetCounter() {
             if (confirm("আপনি কি নিশ্চিত যে আপনি কাউন্টারটি রিসেট করতে চান?")) {
                 count = 0;
